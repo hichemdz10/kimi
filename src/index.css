@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 17% 19%;
+    --foreground: 20 12% 15%;
+    --card: 40 33% 98%;
+    --card-foreground: 20 12% 15%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 20 12% 15%;
+    --primary: 20 12% 15%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 30 10% 73%;
+    --secondary-foreground: 20 12% 15%;
+    --muted: 30 15% 93%;
+    --muted-foreground: 15 10% 37%;
+    --accent: 28 49% 65%;
+    --accent-foreground: 40 33% 98%;
+    --destructive: 0 33% 41%;
+    --destructive-foreground: 40 33% 98%;
+    --border: 30 10% 73%;
+    --input: 30 10% 73%;
+    --ring: 28 49% 65%;
+    --radius: 0.625rem;
+
+    --color-espresso: #3a2e2a;
+    --color-mocha: #4a3b34;
+    --color-cream: #fdfbf7;
+    --color-parchment: #c3bcb2;
+    --color-caramel: #d4a574;
+    --color-gold: #8b6914;
+    --color-dark: #2c2420;
+    --color-warm-gray: #6b5b51;
+    --color-honey: #e8b86d;
+    --color-sage: #5a8a5a;
+    --color-brick: #8b4444;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Geneva, sans-serif;
+    background-color: var(--color-espresso);
+    color: var(--color-dark);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .font-mono-receipt {
+    font-family: 'Cutive Mono', monospace;
+  }
+
+  .card-3d {
+    transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  .card-shadow-resting {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-shadow-hover {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.15),
+      0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  .receipt-line {
+    border-bottom: 1px dotted #555;
+  }
+
+  .category-btn {
+    @apply px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border;
+    border-color: var(--color-parchment);
+    color: var(--color-warm-gray);
+    background: transparent;
+  }
+
+  .category-btn:hover {
+    background: rgba(212, 165, 116, 0.1);
+    border-color: var(--color-caramel);
+    color: var(--color-dark);
+  }
+
+  .category-btn.active {
+    background: var(--color-caramel);
+    color: var(--color-cream);
+    border-color: var(--color-caramel);
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
+  }
+
+  .badge-new {
+    background: var(--color-honey);
+    color: var(--color-dark);
+  }
+
+  .badge-bestseller {
+    background: var(--color-caramel);
+    color: var(--color-cream);
+  }
+
+  .badge-sale {
+    background: var(--color-brick);
+    color: var(--color-cream);
+  }
+
+  @keyframes badge-glow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.4);
+    }
+    100% {
+      box-shadow: 0 0 0 6px rgba(212, 165, 116, 0);
+    }
+  }
+
+  .badge-pulse {
+    animation: badge-glow 2s ease-out infinite;
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease forwards;
+  }
+
+  @keyframes receipt-curl {
+    0%, 100% {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .receipt-curl {
+    animation: receipt-curl 3s ease-in-out infinite;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-espresso);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-mocha);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-warm-gray);
+}
+
+.receipt-scroll::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+.receipt-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-parchment);
+}
